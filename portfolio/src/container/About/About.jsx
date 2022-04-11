@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import { motion } from 'framer-motion'
-import './About.scss'
-import { urlFor, client } from '../../client' 
 import { AppWrapper } from '../../wrapper'
+import { urlFor, client } from '../../client' 
+import './About.scss'
 
 const About = () => {
 	const [about, setAbout] = useState([]);

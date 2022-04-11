@@ -29,9 +29,9 @@ const Navbar = () => {
 					>
 							<HiX onClick={() => setToggle(false)} />
 							<ul>
-								{['home','about','contact','work','skill'].map((item) => (
+								{['home','about','work','skill','contact'].map((item) => (
 									<li key={item}>
-										<a href={`#{item}`} onClick={() => setToggle(false)} >{item}</a>
+										<a href={`#${item}`} onClick={() => setToggle(false)} >{item}</a>
 									</li> 
 								))}
 							</ul>
