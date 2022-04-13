@@ -9,19 +9,18 @@ const Work = () => {
 	const [activeFilter, setActiveFilter] = useState('All');
 	const [animatedCard, setAnimatedCard] = useState({ y: 0, opacity: 1});
 	const [works, setWorks] = useState([]);
-	const [filterWorks, setFilterWorks] = useState([]);
+	const [filterWork, setFilterWork] = useState([]);
 
 	useEffect(() => {
-		const query = '*[_type == "works]'
+		const query = '*[_type == "work"]';
 		client.fetch(query)
 			.then((data) => {
 				setWorks(data);
-				setActiveFilter(data);
+				setFilterWork(data);
 			})
-
 	}, []);
-	const handlework = (item) => {
 
+	const handlework = (item) => {
 
 	}
 	return (
@@ -34,21 +33,24 @@ const Work = () => {
 		</h2>
 		<div className='app__work-filter'>
 			{['React JS','Web development','UI/UX','Mobile App'].map((item, index) => (
-				<div className={`app__work-filter-item app__flex p-text $(activefilter === item ? 'item-active' : '')`} key={index} onclick={() => handlework(item)} >{item}</div>
+				<div 
+					className={`app__work-filter-item app__flex p-text ${activeFilter === item ? 'item-active' : ''}`} 
+					key={index} onclick={() => handlework(item)} 
+				>{item}</div>
 			))}
 		</div>
 		<motion.div 
-			className='app__work-portfoliio'
+			className='app__work-portfolio'
 			animate={animatedCard}
-			transition={{ duration: 0.5, delayChildren:0.5}}
+			transition={{ duration: 0.5, delayChildren: 0.5}}
 		>
-{filterWorks.map((works, index) => {
-	<div className='app__work-item app__flex' key={index}>
-		<div className='app__work-img app__flex'>
-			<img src={urlFor(works.imgUrl)} alt={works.name} />
-		</div>
-	</div>
-})}
+		{filterWork.map((work, index) => (
+			<div className='app__work-item app__flex' key={index}>
+				<div className='app__work-img app__flex'>
+					<img src={urlFor(work.imgUrl)} alt={work.name} />
+				</div>
+			</div>
+		))}
 		</motion.div>
 	</>
 	)
