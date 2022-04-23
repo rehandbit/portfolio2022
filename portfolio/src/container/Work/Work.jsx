@@ -21,7 +21,18 @@ const Work = () => {
 	}, []);
 
 	const handlework = (item) => {
+		setActiveFilter(item);
+		setAnimatedCard([{y:100, opacity:0}]);
 
+		setTimeout(() => {
+			setAnimatedCard([{y:0, opacity:1}]);
+			if(item ==='All') {
+				setFilterWork(works);
+			}else {
+				setFilterWork(works.filter((work) => work.tags.includes(item)))
+			
+			}
+		}, 500);
 	}
 	return (
 	<>
@@ -51,12 +62,12 @@ const Work = () => {
 					
 					<motion.div
 						className='app__work-hover app__flex'
-						whileHover={{opacity:[0, 1]}}
+						whileHover={{	opacity:[0, 1]}}
 						transition={{ duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5}}
 					>
 						<a href={work.projectLink} target="_blank" rel="noreferrer">
 							<motion.div
-								whielInView={{scale:[0, 1]}}
+								whileInView={{scale:[0, 1]}}
 								whileHover={{scale:[1, 0.9]}}
 								transition={{duration: 0.25}}
 								className='app__flex'
@@ -66,7 +77,7 @@ const Work = () => {
 						</a>
 						<a href={work.codeLink} target="_blank" rel="noreferrer">
 							<motion.div
-								whielInView={{scale:[0,1]}}
+								whileInView={{scale:[0,1]}}
 								whileHover={{scale:[1, 0.9]}}
 								transition={{duration: 0.25}}
 								className='app__flex'
