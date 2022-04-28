@@ -28,7 +28,7 @@ const Work = () => {
 			setAnimatedCard([{y:0, opacity:1}]);
 			if(item ==='All') {
 				setFilterWork(works);
-			}else {
+			} else {
 				setFilterWork(works.filter((work) => work.tags.includes(item)))
 			
 			}
