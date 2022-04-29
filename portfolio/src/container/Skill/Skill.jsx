@@ -45,7 +45,7 @@ const Skill = () => {
 				{experience?.map((experience) => (
 					<motion.div className='app__skills-exp-item' key={experience.year}>
 						<div className='app__skills-exp-year'>
-							<p className='bold-text'>{experience.work}</p>
+							<p className='bold-text'>{experience.year}</p>
 						</div>
 						<motion.div className='app__skills-exp-works'>
 							{experience?.work?.map((work) => (
@@ -64,9 +64,10 @@ const Skill = () => {
 									<ReactTooltip
 										id={work.name}
 										effect="solid"
-										arrowColor="ffff"
-										className='skills-tooltip'
+										arrowColor="#ffff"
+										className="skills-tooltip"
 									> 
+										{work.desc}
 									</ReactTooltip>
 								</>
 							))}
