@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
 import { client, urlFor } from '../../client';
+import ReactTooltip from 'react-tooltip';
 import './Skill.scss'
 
 const Skill = () => {
@@ -9,9 +10,10 @@ const Skill = () => {
 
 	useEffect(() => {
 		const query = '*[_type == "experience"]';
-		const skillQuery ='*[_type == "skill"]'
+		const skillQuery ='*[_type == "skill"]';
 		client.fetch(query)
 			.then((data) => {
+				console.log(data)
 				setExperience(data);
 			})
 		client.fetch(skillQuery) 
@@ -25,7 +27,7 @@ const Skill = () => {
 		<h2 className='head-text'>Skills & Experience</h2>
 		<div className='app__skills-container'>
 			<motion.div className='app__skills-list'>
-				{skills.map((skill) => (
+				{skills?.map((skill) => (
 					<motion.div 
 						transition={{duration: 0.5}}
 						whileInView={{opacity: [0,1]}}
@@ -38,6 +40,39 @@ const Skill = () => {
 						<p className='p-text'>{skill.name}</p>
 					</motion.div>
 				))}
+			</motion.div>
+			<motion.div className='app__skills-exp'>
+				{experience?.map((experience) => (
+					<motion.div className='app__skills-exp-item' key={experience.year}>
+						<div className='app__skills-exp-year'>
+							<p className='bold-text'>{experience.work}</p>
+						</div>
+						<motion.div className='app__skills-exp-works'>
+							{experience?.work?.map((work) => (
+								<>
+									<motion.div 
+										className='app__skills-exp-work'
+										whileInView={{opacity: [0,1]}}
+										transition={{duration: 0.5}}
+										data-tip
+										data-for={work.name}
+										key={work.name}
+									>
+									<h4 className='bold-text'>{work.name}</h4>
+									<p className='p-text'>{work.company}</p>
+									</motion.div>
+									<ReactTooltip
+										id={work.name}
+										effect="solid"
+										arrowColor="ffff"
+										className='skills-tooltip'
+									> 
+									</ReactTooltip>
+								</>
+							))}
+						</motion.div>
+					</motion.div>
+					))}
 			</motion.div>
 		</div>
 	</>

@@ -9,8 +9,8 @@ export default{
             type:'string'
         },
         {
-            name:'works',
-            title:'Works',
+            name:'work',
+            title:'Work',
             type:'array',
             of:[{ type:'workExperience'}]
         },
