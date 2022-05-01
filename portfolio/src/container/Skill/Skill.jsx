@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { client, urlFor } from '../../client';
 import ReactTooltip from 'react-tooltip';
 import './Skill.scss'
+import { AppWrapper } from '../../wrapper';
 
 const Skill = () => {
 	const [experience, setExperience] = useState([]);
@@ -79,4 +80,4 @@ const Skill = () => {
 	</>
 	)
 }
-export default Skill
+export default AppWrapper(Skill, Skill);
