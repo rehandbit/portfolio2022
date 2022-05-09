@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { client, urlFor } from '../../client';
 import ReactTooltip from 'react-tooltip';
 import './Skill.scss'
-import { AppWrapper } from '../../wrapper';
+import { AppWrapper, MotionWrapper } from '../../wrapper';
 
 const Skill = () => {
 	const [experience, setExperience] = useState([]);
@@ -35,7 +35,7 @@ const Skill = () => {
 						className='app__skills-item app__flex'
 						key={skill.name}
 					>
-						<div className='app__flex' style={{backgroundColor : Skill.bgColor }}>
+						<div className='app__flex' style={{backgroundColor : skill.bgColor }}>
 							<img src={urlFor(skill.icon)} alt="skill.name" />
 						</div>
 						<p className='p-text'>{skill.name}</p>
@@ -80,4 +80,4 @@ const Skill = () => {
 	</>
 	)
 }
-export default AppWrapper(Skill, Skill);
+export default AppWrapper(MotionWrapper(Skill, 'app__skills'),'skill','app__whitebg');
