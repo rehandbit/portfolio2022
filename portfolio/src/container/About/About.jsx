@@ -20,7 +20,7 @@ const About = () => {
 			<span> Good Design</span>
 			<br/>
 			means 
-			<span>Good Business</span>
+			<span> Good Business</span>
 		</h2> 
 		<div className='app__profile'>
 			{about.map((about, index) => (
@@ -42,4 +42,4 @@ const About = () => {
 	)
 }
 
-export default AppWrapper(MotionWrapper(About, 'app__about'), 'about', "app__whitebg");
+export default AppWrapper(MotionWrapper(About, 'app__about'), 'about', "app__primarybg");

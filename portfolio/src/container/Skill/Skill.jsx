@@ -14,7 +14,6 @@ const Skill = () => {
 		const skillQuery ='*[_type == "skill"]';
 		client.fetch(query)
 			.then((data) => {
-				console.log(data)
 				setExperience(data);
 			})
 		client.fetch(skillQuery) 
@@ -80,4 +79,4 @@ const Skill = () => {
 	</>
 	)
 }
-export default AppWrapper(MotionWrapper(Skill, 'app__skills'),'skill','app__whitebg');
+export default AppWrapper(MotionWrapper(Skill, 'app__skills'),'skill','app__primary');
